@@ -1,0 +1,23 @@
+#summary Describes argument constraints in FakeItEasy.
+
+= Argument Constraints =
+
+When configuring and asserting calls in FakeItEasy, the arguments of the call can be constrained so that only calls to the configured method where the arguments matches the constraint are selected.
+
+
+= The Syntax =
+{{{
+var foo = A.Fake<IFoo>();
+
+// Asserting on the method "Bar" that takes a string value and an int value as arguments
+A.CallTo(() => foo.Bar(A<string>.Ignored.Argument, A<int>.That.Matches(x => x < 10).Argument)).MustHaveHappened();
+
+// You can have constraints for only a subset of the arguments if you want.
+A.CallTo(() => foo.Bar("this exact string", A<int>.Ignored.Argument)).MustHaveHappened();
+
+// Any time the argument is not of an interface type you can omit the ".Argument" part...
+A.CallTo(() => foo.Bar(A<string>.Ignored, A<int>.That.Matches(x => x < 10))).MustHaveHappened();
+
+// Constraints can be chained together.
+var constraint = A<int>.That.IsGreaterThan(10).And.Matches(x => x % 2 == 0);
+}}}
