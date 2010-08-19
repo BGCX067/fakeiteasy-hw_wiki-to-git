@@ -94,6 +94,7 @@ public void JustDoIt()
 
 The test will now fail with the following exception message:
 
+<pre>
  Assertion failed for the following calls:
     'OrderedAssertsDemo.IUnitOfWorkFactory.BeginWork()' repeated once
     'OrderedAssertsDemo.IDoSomethingPrettyUseful.JustDoIt()' repeated once
@@ -102,3 +103,4 @@ The test will now fail with the following exception message:
     1.  'OrderedAssertsDemo.IUnitOfWorkFactory.BeginWork()'
     2.  'System.IDisposable.Dispose()'
     3.  'OrderedAssertsDemo.IDoSomethingPrettyUseful.JustDoIt()'
+</pre>
