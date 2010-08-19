@@ -6,6 +6,8 @@ The concept of ordered assertions is somewhat complex and nothing that should be
 
 In FakeItEasy you can assert that calls happened in a specific order on _more than one_ fake object.
 
+Note that this feature is not available in the 1.0.* versions.
+
 
 = Details =
 
