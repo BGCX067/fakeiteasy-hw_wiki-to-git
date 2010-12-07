@@ -1,0 +1,19 @@
+#summary On how to create strict mocks in FakeItEasy.
+
+= Introduction =
+
+FakeItEasy is slightly opinionated in this regard and I think that strict mocks should be avoided as far as possible. There is however an easy way to achieve strict mock behaviour.
+
+
+= Details =
+
+{{{
+var foo = A.Fake<IFoo>();
+Any.CallTo(foo).Throws(new Exception("An unexpected method was called on the fake object."));
+}}}
+
+After you have configured your fake in this fashion you can configure any "allowed" calls as usual, for example:
+
+{{{
+A.CallTo(() => foo.Bar()).Returns("bar");
+}}}
